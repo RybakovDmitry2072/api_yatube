@@ -26,10 +26,12 @@ class CommentsViewSet(viewsets.ModelViewSet):
     def get_object(self):
         comment_id = self.kwargs['comment_id']
         post_id = self.kwargs['post_id']
-        comment = get_object_or_404(Comment, pk=comment_id, post_id=post_id)
+        comment = get_object_or_404(Comment, 
+                                    pk=comment_id,
+                                    post_id=post_id)
         self.check_object_permissions(self.request, comment)
         return comment
-        
+
     def get_queryset(self):
         post_id = self.kwargs['post_id']
         return Comment.objects.filter(post_id=post_id)
