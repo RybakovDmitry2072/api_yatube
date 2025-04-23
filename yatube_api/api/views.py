@@ -27,16 +27,13 @@ class CommentsViewSet(viewsets.ModelViewSet):
         comment_id = self.kwargs['comment_id']
         return self.get_queryset().filter(pk=comment_id)
 
-
     def get_queryset(self):
         post_id = self.kwargs['post_id']
         return Comment.objects.filter(post_id=post_id)
 
-
     def perform_update(self, serializer):
         serializer.save(author=self.request.user)
 
-    
     def perform_create(self, serializer):
         post = get_object_or_404(Post, pk=self.kwargs['post_id'])
         serializer.save(author=self.request.user, post=post)
