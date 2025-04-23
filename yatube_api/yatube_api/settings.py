@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
 
+    'api',
     'posts.apps.PostsConfig',
 ]
 
