@@ -5,7 +5,6 @@ from .permissions import IsOwnerOrReadOnly
 from django.shortcuts import get_object_or_404
 
 
-
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -28,7 +27,7 @@ class CommentsViewSet(viewsets.ModelViewSet):
         comment_id = self.kwargs['comment_id']
         post_id = self.kwargs['post_id']
         comment = get_object_or_404(Comment, pk=comment_id, post_id=post_id)
-        self.check_object_permissions(self.request, comment)  # Важно! Проверяем права
+        self.check_object_permissions(self.request, comment)
         return comment
         
     def get_queryset(self):
