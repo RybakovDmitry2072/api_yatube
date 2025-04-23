@@ -26,7 +26,7 @@ comment_detail = CommentsViewSet.as_view({
 urlpatterns = [
     path('api-token-auth/', views.obtain_auth_token),
     path('posts/<int:post_id>/comments/', comment_list),
-    path('<int:post_id>', comment_list),
+    path('posts/<int:post_id>', comment_list),
     path('posts/<int:post_id>/comments/<comment_id>/', comment_detail),
     path('', include(router.urls)),
 ]
