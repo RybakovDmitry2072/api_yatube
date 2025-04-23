@@ -1,3 +1,4 @@
+from django.http import Http404
 from rest_framework import viewsets
 from posts.models import Post, Group, Comment
 from .serializers import PostSerializer, GroupSerializer, CommentSerializer
